@@ -16,7 +16,7 @@ class Contenedor {
     return archivo;
   }
 
-  async save(producto, precio, foto) {
+  async save({ title, price, thumbnail }) {
     let archivo;
     let existe = await this.exist();
     if (existe) {
@@ -28,7 +28,7 @@ class Contenedor {
         else {
           ultimo = archivo[archivo.length - 1].id;
         }
-        this.productos = [...archivo, { title: producto, price: precio, thumbnail: foto, id: ultimo + 1 }];
+        this.productos = [...archivo, { title: title, price: price, thumbnail: thumbnail, id: ultimo + 1 }];
 
         await fs.promises.writeFile(this.ruta, JSON.stringify(this.productos));
         console.log("Producto cargado!");
@@ -71,7 +71,7 @@ class Contenedor {
       try {
         let archivo = await this.read();
         let producto_a_borrar = archivo.findIndex((item) => item.id === id_borrar);
-        if (producto_a_borrar) {
+        if (producto_a_borrar >= 0) {
           archivo.splice(producto_a_borrar, 1);
           this.productos = [...archivo];
           await fs.promises.writeFile(this.ruta, JSON.stringify(this.productos));
@@ -94,13 +94,13 @@ class Contenedor {
   }
 }
 
-const algo = async () => {
+const probar = async () => {
   const producto_nuevo = new Contenedor("productos.txt");
-  await producto_nuevo.save("monopatin", 100, "moto.jpg");
+  await producto_nuevo.save({ title: "monopatin", price: 100, thumbnail: "moto.jpg" });
   console.log(await producto_nuevo.getById(6));
   console.log("Trae todo", await producto_nuevo.getAll());
   await producto_nuevo.deleteById(4);
   await producto_nuevo.deleteAll();
 };
 
-algo();
+probar();
