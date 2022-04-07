@@ -103,4 +103,4 @@ const probar = async () => {
   await producto_nuevo.deleteAll();
 };
 
-probar();
+// probar();

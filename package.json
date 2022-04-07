@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yaraureluis/backendproject#readme",
   "dependencies": {
-    "console-log-colors": "^0.2.3"
+    "console-log-colors": "^0.2.3",
+    "express": "^4.17.3"
   }
 }
