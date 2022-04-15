@@ -51,8 +51,9 @@ class Contenedor {
   async updateById(id_modificar, { title, price, thumbnail }) {
     let index_a_modificar = this.productos.findIndex((item) => item.id == id_modificar);
     if (index_a_modificar >= 0) {
-      const producto_modificado = { title, price, thumbnail, id: id_modificar };
+      const producto_modificado = { title, price, thumbnail, id: +id_modificar };
       this.productos[index_a_modificar] = producto_modificado;
+      return this.productos;
     } else return { error: "No existe un producto con id: " + id_modificar };
   }
 
