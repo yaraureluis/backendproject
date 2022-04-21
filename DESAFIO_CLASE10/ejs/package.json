@@ -2,7 +2,7 @@
   "name": "curso-back-end",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,10 +17,7 @@
   },
   "homepage": "https://github.com/yaraureluis/backendproject#readme",
   "dependencies": {
-    "console-log-colors": "^0.2.3",
     "express": "^4.17.3",
-    "ejs": "^3.1.5",
-    "handlebars": "^4.7.7",
-    "pug": "^3.0.2"
+    "ejs": "^3.1.5"
   }
 }
