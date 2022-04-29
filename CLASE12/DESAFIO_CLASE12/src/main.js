@@ -45,7 +45,7 @@ io.on("connection", (socket) => {
   });
 
   app.post("/chat", (req, res) => {
-    mensajes.push({ mensaje: req.body.mensaje, id: socket.id });
+    mensajes.push(req.body);
     io.sockets.emit("MENSAJES", mensajes);
     console.log(mensajes);
     res.redirect("/");
