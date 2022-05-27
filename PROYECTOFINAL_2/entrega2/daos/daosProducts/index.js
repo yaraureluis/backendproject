@@ -11,7 +11,6 @@ switch (config.PERS) {
   case "firebase":
     const { default: ProductsDAOFirebase } = await import("./productsDAOFirebase.js");
     productsDao = new ProductsDAOFirebase();
-    productsDao.setProductos();
     // PRUEBA DE ADD PRODUCT
     // productsDao.addProduct({ title: "Sony Xperia Pro-I", description: "MODIFICADA XXX", price: 25300, stock: 11, thumbnail: "https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-pro-i.jpg", id: 1 });
     break;
