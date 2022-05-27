@@ -1,0 +1,331 @@
+    // CLASE 18, DESAFIO MONGODB - TEXTO DE LA TERMINAL
+
+    use admin
+    'switched to db admin'
+    show databases
+    admin         40.00 KiB
+    base_prueba   40.00 KiB
+    config       120.00 KiB
+    local         40.00 KiB
+    
+    
+    // CREAR BASE DE DATOS ECOMMERCE
+    use ecommerce
+    'switched to db ecommerce'
+    show databases
+    admin         40.00 KiB
+    base_prueba   40.00 KiB
+    config       120.00 KiB
+    local         40.00 KiB
+
+    // CREAR COLECCIÓN PRODUCTOS Y LE AGREGA 10 DOCUMENTOS
+    db.productos.insertMany([
+    {title:"Samsung Galaxy A73 5G",price:400,thumbnail:"https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a73-5g-1.jpg"},
+    {title:"Samsung Galaxy s21 5G",price:900,thumbnail:"https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a73-5g-1.jpg"},
+    {title:"Apple iPhone 13 Pro Max",price:3000,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg"},
+    {title:"Sony Xperia Pro-I",price:2500,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-pro-i.jpg"},
+    {title:"Motorola Moto G22",price:1500,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g22.jpg"},
+    {title:"Xiaomi Black Shark 5 Pro",price:1900,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-black-shark-5-pro.jpg"},
+    {title:"ZTE Axon 40 pro",price:4500,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/zte-axon40-pro-.jpg"},
+    {title:"vivo S15 Pro",price:2900,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/vivo-s15-pro.jpg"},
+    {title:"Realme Narzo 50 Pro",price:3000,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/realme-narzo-50-pro-5g.jpg"},
+    {title:"Sony Xperia 1 IV",price:1500,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-1-iv-.jpg"}])
+    { acknowledged: true,
+    insertedIds: 
+   { '0': ObjectId("6286c3e9eb218970ba41fea7"),
+     '1': ObjectId("6286c3e9eb218970ba41fea8"),
+     '2': ObjectId("6286c3e9eb218970ba41fea9"),
+     '3': ObjectId("6286c3e9eb218970ba41feaa"),
+     '4': ObjectId("6286c3e9eb218970ba41feab"),
+     '5': ObjectId("6286c3e9eb218970ba41feac"),
+     '6': ObjectId("6286c3e9eb218970ba41fead"),
+     '7': ObjectId("6286c3e9eb218970ba41feae"),
+     '8': ObjectId("6286c3e9eb218970ba41feaf"),
+     '9': ObjectId("6286c3e9eb218970ba41feb0") } }
+
+    //  CREADA COLECCION MENSAJES Y SE AGREGARO 10 DOCUMENTOS
+    show databases
+    admin         40.00 KiB
+    base_prueba   40.00 KiB
+    config       128.00 KiB
+    ecommerce     40.00 KiB
+    local         40.00 KiB
+    db.mensajes.insertMany([
+    {name: "Luis", date: "2022/05/15", mesagge: "Hola, que tal?"},
+    {name: "Pedro", date: "2022/05/15", mesagge: "Hola, amigos"},
+    {name: "Carlos", date: "2022/05/15", mesagge: "Aqui trabajando a full"},
+    {name: "Juana", date: "2022/05/15", mesagge: "Genial! yo con fiaca..."},
+    {name: "Petra", date: "2022/05/15", mesagge: "yo estoy sin agua, mal!"},
+    {name: "Mila", date: "2022/05/15", mesagge: "como andan? que mal Petra!"},
+    {name: "Juan", date: "2022/05/15", mesagge: "desde cuando estás asi?"},
+    {name: "Albert", date: "2022/05/15", mesagge: "yo estoy igual gente!"},
+    {name: "Fran", date: "2022/05/15", mesagge: "es algo en el barrio, yo estoy en las mismas..."},
+    {name: "Mary", date: "2022/05/15", mesagge: "vengan todos a casa, vamos a la pile!"},
+    ])
+    { acknowledged: true,
+    insertedIds: 
+   { '0': ObjectId("6286c5d0eb218970ba41feb1"),
+     '1': ObjectId("6286c5d0eb218970ba41feb2"),
+     '2': ObjectId("6286c5d0eb218970ba41feb3"),
+     '3': ObjectId("6286c5d0eb218970ba41feb4"),
+     '4': ObjectId("6286c5d0eb218970ba41feb5"),
+     '5': ObjectId("6286c5d0eb218970ba41feb6"),
+     '6': ObjectId("6286c5d0eb218970ba41feb7"),
+     '7': ObjectId("6286c5d0eb218970ba41feb8"),
+     '8': ObjectId("6286c5d0eb218970ba41feb9"),
+     '9': ObjectId("6286c5d0eb218970ba41feba") } }
+
+    //  LISTO TODOS LOS DOCXUMENTOS DE LA COLECCIÓN PRODUCTOS
+    db.productos.find()
+    { _id: ObjectId("6286c3e9eb218970ba41fea7"),
+    title: 'Samsung Galaxy A73 5G',
+    price: 400,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a73-5g-1.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41fea8"),
+    title: 'Samsung Galaxy s21 5G',
+    price: 900,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a73-5g-1.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41fea9"),
+    title: 'Apple iPhone 13 Pro Max',
+    price: 3000,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feaa"),
+    title: 'Sony Xperia Pro-I',
+    price: 2500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-pro-i.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feab"),
+    title: 'Motorola Moto G22',
+    price: 1500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g22.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feac"),
+    title: 'Xiaomi Black Shark 5 Pro',
+    price: 1900,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-black-shark-5-pro.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41fead"),
+    title: 'ZTE Axon 40 pro',
+    price: 4500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/zte-axon40-pro-.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feae"),
+    title: 'vivo S15 Pro',
+    price: 2900,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/vivo-s15-pro.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feaf"),
+    title: 'Realme Narzo 50 Pro',
+    price: 3000,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/realme-narzo-50-pro-5g.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feb0"),
+    title: 'Sony Xperia 1 IV',
+    price: 1500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-1-iv-.jpg' }
+
+    //  LISTO TODOS LOS DOCXUMENTOS DE LA COLECCIÓN MENSAJES
+    db.mensajes.find()
+    { _id: ObjectId("6286c5d0eb218970ba41feb1"),
+      name: 'Luis',
+      date: '2022/05/15',
+      mesagge: 'Hola, que tal?' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb2"),
+      name: 'Pedro',
+      date: '2022/05/15',
+      mesagge: 'Hola, amigos' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb3"),
+      name: 'Carlos',
+      date: '2022/05/15',
+      mesagge: 'Aqui trabajando a full' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb4"),
+      name: 'Juana',
+      date: '2022/05/15',
+      mesagge: 'Genial! yo con fiaca...' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb5"),
+      name: 'Petra',
+      date: '2022/05/15',
+      mesagge: 'yo estoy sin agua, mal!' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb6"),
+      name: 'Mila',
+      date: '2022/05/15',
+      mesagge: 'como andan? que mal Petra!' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb7"),
+      name: 'Juan',
+      date: '2022/05/15',
+      mesagge: 'desde cuando estás asi?' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb8"),
+      name: 'Albert',
+      date: '2022/05/15',
+      mesagge: 'yo estoy igual gente!' }
+    { _id: ObjectId("6286c5d0eb218970ba41feb9"),
+      name: 'Fran',
+      date: '2022/05/15',
+      mesagge: 'es algo en el barrio, yo estoy en las mismas...' }
+    { _id: ObjectId("6286c5d0eb218970ba41feba"),
+      name: 'Mary',
+      date: '2022/05/15',
+      mesagge: 'vengan todos a casa, vamos a la pile!' }
+
+    //   MUESTRO LA CANTIDAD DE DOCUMENTOS DENTRO DE LA COLECCÓN PRODUCTOS
+    db.productos.estimatedDocumentCount()
+    10
+
+    //   MUESTRO LA CANTIDAD DE DOCUMENTOS DENTRO DE LA COLECCÓN MENSAJES
+    db.mensajes.estimatedDocumentCount()
+    10
+    
+    // AGREGO UN PRODUCTO EN LA COLECCIÓN DE PRODUCTOS
+    db.productos.insertOne({title:"Sony Xperia 5",price: 800,thumbnail:"https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-5-.jpg"})
+    { acknowledged: true,
+      insertedId: ObjectId("6286c86beb218970ba41febb") }
+
+    // REALIZO UNA CONSULTA POR NOMBRE DE PRODUCTO
+    db.productos.findOne({title:"Sony Xperia Pro-I"})
+    { _id: ObjectId("6286c3e9eb218970ba41feaa"),
+    title: 'Sony Xperia Pro-I',
+    price: 2500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-pro-i.jpg' }
+
+    // LISTO PRODUCTOS CON PRECIO MENOR A 1000
+    db.productos.find({price: {$lt: 1000}})
+    { _id: ObjectId("6286c3e9eb218970ba41fea7"),
+    title: 'Samsung Galaxy A73 5G',
+    price: 400,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a73-5g-1.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41fea8"),
+    title: 'Samsung Galaxy s21 5G',
+    price: 900,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-a73-5g-1.jpg' }
+    { _id: ObjectId("6286c86beb218970ba41febb"),
+    title: 'Sony Xperia 5',
+    price: 800,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-5-.jpg' }
+
+    // LISTO PRODUCTOS CON PRECIO ENTRE 1000 Y 3000
+    db.productos.find({$and:[{price:{$gt:1000}},{price:{$lt:3000}}]})
+    { _id: ObjectId("6286c3e9eb218970ba41feaa"),
+    title: 'Sony Xperia Pro-I',
+    price: 2500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-pro-i.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feab"),
+    title: 'Motorola Moto G22',
+    price: 1500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g22.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feac"),
+    title: 'Xiaomi Black Shark 5 Pro',
+    price: 1900,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/xiaomi-black-shark-5-pro.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feae"),
+    title: 'vivo S15 Pro',
+    price: 2900,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/vivo-s15-pro.jpg' }
+    { _id: ObjectId("6286c3e9eb218970ba41feb0"),
+    title: 'Sony Xperia 1 IV',
+    price: 1500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-1-iv-.jpg' }
+
+
+    // LISTO PRODUCTOS CON PRECIO MAYOR A 3000
+    db.productos.find({price: {$gt: 3000}})
+    { _id: ObjectId("6286c3e9eb218970ba41fead"),
+    title: 'ZTE Axon 40 pro',
+    price: 4500,
+    thumbnail: 'https://fdn2.gsmarena.com/vv/bigpic/zte-axon40-pro-.jpg' }
+
+    // CONSULTA QUE TRAE EL SOLO EL NOMBRE DEL 3ER PRODUCTO MAS BARATO
+    db.productos.find({}, {title:1, _id:0}).sort({price: 1}).skip(2).limit(1)
+    { title: 'Samsung Galaxy s21 5G' }
+
+
+    // AGREGO EL CAMPO STOCK A TODOS LOS PRODUCTOS CON UN VALOR DE 100
+    db.productos.updateMany({}, {$set: {stock: 100}})
+    { acknowledged: true,
+    insertedId: null,
+    matchedCount: 11,
+    modifiedCount: 11,
+    upsertedCount: 0 }
+
+    // CAMBIO EL STOCK A 0 DE LOS PRODUCTOS MAYORES A 4000
+    db.productos.updateMany({price: {$gt: 4000}},{$set: {stock:0}})
+    { acknowledged: true,
+    insertedId: null,
+    matchedCount: 1,
+    modifiedCount: 1,
+    upsertedCount: 0 }
+
+    // BORRO LOS PRODUCTOS CON PRECIO MENOR A 1000
+    db.productos.deleteMany({price: {$lt: 1000}})
+    { acknowledged: true, deletedCount: 3 }
+
+    // AGREGO UN USUARIO: "PEPE" CLAVE: "asd456" SOLO CON PERMISOS DE LECTURA
+
+    use admin
+    'already on db admin'
+    db.createUser({user: "Pepe", pwd:"asd456", roles: [{role: "read", db: "ecommerce"}]})
+    { ok: 1 }
+
+    // COMPROBACION PERMISOS PARA PEPE
+
+    C:\Users\Luis Yaraure>mongo -u Pepe -p asd456
+    MongoDB shell version v5.0.8
+    connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+    Implicit session: session { "id" : UUID("70ae9d72-c106-480d-98bb-e1c012d31903") }
+    MongoDB server version: 5.0.8
+    ================
+    Warning: the "mongo" shell has been superseded by "mongosh",
+    which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+    an upcoming release.
+    For installation instructions, see
+    https://docs.mongodb.com/mongodb-shell/install/
+    ================
+    > show databases
+    ecommerce  0.000GB
+    > use ecommerce
+    switched to db ecommerce
+    
+    // PRUEBA DE LECTURA
+    > db.productos.find()
+    { "_id" : ObjectId("6286c3e9eb218970ba41fea9"), "title" : "Apple iPhone 13 Pro Max", "price" : 3000, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg", "stock" : 100 }
+    { "_id" : ObjectId("6286c3e9eb218970ba41feaa"), "title" : "Sony Xperia Pro-I", "price" : 2500, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-pro-i.jpg", "stock" : 100 }
+    { "_id" : ObjectId("6286c3e9eb218970ba41feab"), "title" : "Motorola Moto G22", "price" : 1500, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g22.jpg", "stock" : 100 }
+    { "_id" : ObjectId("6286c3e9eb218970ba41feac"), "title" : "Xiaomi Black Shark 5 Pro", "price" : 1900, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-black-shark-5-pro.jpg", "stock" : 100 }
+    { "_id" : ObjectId("6286c3e9eb218970ba41fead"), "title" : "ZTE Axon 40 pro", "price" : 4500, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/zte-axon40-pro-.jpg", "stock" : 0 }
+    { "_id" : ObjectId("6286c3e9eb218970ba41feae"), "title" : "vivo S15 Pro", "price" : 2900, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/vivo-s15-pro.jpg", "stock" : 100 }
+    { "_id" : ObjectId("6286c3e9eb218970ba41feaf"), "title" : "Realme Narzo 50 Pro", "price" : 3000, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/realme-narzo-50-pro-5g.jpg", "stock" : 100 }
+    { "_id" : ObjectId("6286c3e9eb218970ba41feb0"), "title" : "Sony Xperia 1 IV", "price" : 1500, "thumbnail" : "https://fdn2.gsmarena.com/vv/bigpic/sony-xperia-1-iv-.jpg", "stock" : 100 }
+    
+    // PRUEBA DE ESCRITURA
+    > db.productos.insertOne({title:"Prueba Pepe"})
+    uncaught exception: WriteCommandError({
+            "ok" : 0,
+            "errmsg" : "not authorized on ecommerce to execute command { insert: \"productos\", ordered: true, lsid: { id: UUID(\"70ae9d72-c106-480d-98bb-e1c012d31903\") }, $db: \"ecommerce\" }",
+            "code" : 13,
+            "codeName" : "Unauthorized"
+    }) :
+    WriteCommandError({
+            "ok" : 0,
+            "errmsg" : "not authorized on ecommerce to execute command { insert: \"productos\", ordered: true, lsid: { id: UUID(\"70ae9d72-c106-480d-98bb-e1c012d31903\") }, $db: \"ecommerce\" }",
+            "code" : 13,
+            "codeName" : "Unauthorized"
+    })
+    WriteCommandError@src/mongo/shell/bulk_api.js:421:48
+    executeBatch@src/mongo/shell/bulk_api.js:936:23
+    Bulk/this.execute@src/mongo/shell/bulk_api.js:1182:21
+    DBCollection.prototype.insertOne@src/mongo/shell/crud_api.js:264:9
+    @(shell):1:1
+    
+    // PRUEBA DELETE
+    > db.productos.deleteOne({title: 'Motorola Moto G22'})
+    uncaught exception: WriteCommandError({
+            "ok" : 0,
+            "errmsg" : "not authorized on ecommerce to execute command { delete: \"productos\", ordered: true, lsid: { id: UUID(\"70ae9d72-c106-480d-98bb-e1c012d31903\") }, $db: \"ecommerce\" }",
+            "code" : 13,
+            "codeName" : "Unauthorized"
+    }) :
+    WriteCommandError({
+            "ok" : 0,
+            "errmsg" : "not authorized on ecommerce to execute command { delete: \"productos\", ordered: true, lsid: { id: UUID(\"70ae9d72-c106-480d-98bb-e1c012d31903\") }, $db: \"ecommerce\" }",
+            "code" : 13,
+            "codeName" : "Unauthorized"
+    })
+    WriteCommandError@src/mongo/shell/bulk_api.js:421:48
+    executeBatch@src/mongo/shell/bulk_api.js:936:23
+    Bulk/this.execute@src/mongo/shell/bulk_api.js:1182:21
+    DBCollection.prototype.deleteOne@src/mongo/shell/crud_api.js:375:17
+    @(shell):1:1
+    >
