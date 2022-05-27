@@ -1,6 +1,3 @@
-// IMPORTO LA INSTANCIA new_product PARA PODER ACCEDER AL PRODUCTO
-// QUE NECESITO AGREGAR AL CARRITO POR SU ID
-// import { new_product } from "../../server.js";
 import axios from "axios";
 import fs from "fs";
 
