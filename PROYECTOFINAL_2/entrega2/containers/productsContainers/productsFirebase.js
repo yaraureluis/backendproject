@@ -1,11 +1,4 @@
-// import admin from "firebase-admin";
-// import config from "../../config.js";
 import { db } from "../../firebase_start.js";
-// admin.initializeApp({
-//   credential: admin.credential.cert(config.firebase),
-// });
-
-// const db = admin.firestore();
 
 export const ProductsContainerFirebase = class ProductsContainer {
   constructor(nombreColeccion) {

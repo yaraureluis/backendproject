@@ -1,10 +1,13 @@
-import { ProductsContainerMongoDB } from "../../containers/productsContainers/productsMongoDB.js";
+import ProductsContainerMongoDB from "../../containers/productsContainers/productsMongoDB.js";
 
 class ProductsDAOMongoDB extends ProductsContainerMongoDB {
   constructor() {
     super("products", {
-      id: { type: String, required: true },
-      products: { type: Array, required: true },
+      title: { type: String, required: true },
+      price: { type: Number, required: true },
+      description: { type: String, required: true },
+      thumbnail: { type: String, required: true },
+      stock: { type: Number, required: true },
     });
   }
 }

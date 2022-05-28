@@ -3,14 +3,14 @@ export default {
     path: "./database",
   },
   mongodb: {
-    cnxStr: "srv+mongodb://xxxxxxxxxxxxxxxxxxx",
+    cnxStr: "mongodb+srv://yaraureluis:XXXXXX@cluster0.xjcx5.mongodb.net/?retryWrites=true&w=majority",
     options: {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
+      // useCreateIndex: true,
       serverSelectionTimeoutMS: 5000,
     },
   },
   firebase: {},
-  PERS: "firebase",
+  PERS: "mongodb",
 };
