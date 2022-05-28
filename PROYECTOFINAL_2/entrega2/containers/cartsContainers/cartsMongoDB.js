@@ -42,7 +42,7 @@ class CartsContainerMongoDB {
   getProductsByCartId = async (cart_id) => {
     try {
       let selectedCart = await this.coleccion.findById(cart_id);
-      if (selectedCart.exists) return selectedCart.products;
+      if (selectedCart) return selectedCart.products;
       else throw new Error("Cart not found");
     } catch (err) {
       return { error: "Error getting carts products" };
@@ -60,19 +60,34 @@ class CartsContainerMongoDB {
       console.log("INDEX", index);
 
       if (index === -1) {
-        //delete productToAdd.stock;
-        selectedCart.products.push({ ...productToAdd, qty: 1 });
+        delete productToAdd.stock;
+        selectedCart.products.push({ ...productToAdd._doc, qty: 1 });
         await selectedCart.save();
       } else {
-        // delete selectedCart.products[index].stock;
-        if (productToAdd.stock >= selectedCart.products[index].qty + 1) {
-          selectedCart.products[index].qty++;
+        delete selectedCart.products[index].stock;
+        let qty_to_set = selectedCart.products[index].qty + 1;
+        console.log("stock---", productToAdd.stock);
+        console.log("qty-----", qty_to_set);
+        if (productToAdd.stock >= qty_to_set) {
+          console.log("ENTRÓ");
+          await this.coleccion.findByIdAndUpdate(id_cart, { $inc: { [`products.${index}.qty`]: 1 } });
           await selectedCart.save();
-        } else throw new Error("Product off stock");
+        } else return { ERR: "SIN STOCK" };
       }
       return true;
     } catch (err) {
       return { error: "Product not added", err };
+    }
+  };
+
+  deleteProduct = async (id_cart, id_product) => {
+    try {
+      let cart = await this.getProductsByCartId(id_cart);
+      console.log(cart);
+      await cart.findByIdAndDelete(id_product);
+      return true;
+    } catch (err) {
+      return { error: "Error deleting product" };
     }
   };
 }
