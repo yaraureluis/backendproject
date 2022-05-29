@@ -3,7 +3,7 @@ export default {
     path: "./database",
   },
   mongodb: {
-    cnxStr: "mongodb+srv://yaraureluis:000g0g@cluster0.xjcx5.mongodb.net/?retryWrites=true&w=majority",
+    cnxStr: "mongodb+srv://yaraureluis:0000@cluster0.xjcx5.mongodb.net/?retryWrites=true&w=majority",
     options: {
       // useNewUrlParser: true,
       // useUnifiedTopology: true,

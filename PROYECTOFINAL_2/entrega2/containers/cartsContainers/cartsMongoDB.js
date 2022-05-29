@@ -60,11 +60,10 @@ class CartsContainerMongoDB {
       console.log("INDEX", index);
 
       if (index === -1) {
-        delete productToAdd.stock;
+        delete productToAdd._doc.stock;
         selectedCart.products.push({ ...productToAdd._doc, qty: 1 });
         await selectedCart.save();
       } else {
-        delete selectedCart.products[index].stock;
         let qty_to_set = selectedCart.products[index].qty + 1;
         console.log("stock---", productToAdd.stock);
         console.log("qty-----", qty_to_set);
@@ -80,14 +79,30 @@ class CartsContainerMongoDB {
     }
   };
 
-  deleteProduct = async (id_cart, id_product) => {
+  deleteProduct = async (cart_id, product_id) => {
     try {
-      let cart = await this.getProductsByCartId(id_cart);
-      console.log(cart);
-      await cart.findByIdAndDelete(id_product);
+      const SelectedCart = await this.getById(cart_id);
+      if (!SelectedCart) throw new Error("Cart not found");
+
+      const index = SelectedCart.products.findIndex((product) => product._id == product_id);
+      if (index === -1) throw new Error("Product not found");
+
+      await this.collection.findByIdAndUpdate(cart_id, { $pull: { products: { id: product_id } } }, { safe: true, multi: true });
       return true;
     } catch (err) {
-      return { error: "Error deleting product" };
+      return { error: err };
+    }
+  };
+
+  clearProducdeleteAllProductsts = async (id_cart) => {
+    try {
+      const SelectedCart = await this.getById(id_cart);
+      if (!SelectedCart) throw new Error("Cart not found");
+
+      await this.collection.findByIdAndUpdate(id_cart, { $set: { products: [] } });
+      return true;
+    } catch (err) {
+      return { error: err };
     }
   };
 }
