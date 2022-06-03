@@ -8,14 +8,16 @@ import { normalize, denormalize, schema } from "normalizr";
 import path from "path";
 const __dirname = path.resolve();
 
+//------------------ ESQUEMA ---------------/
 const authorSchema = new schema.Entity("authors");
-
+const idSchema = new schema.Entity("id");
 const textMessageSchema = new schema.Entity("texts");
-
 const messageSchema = new schema.Entity("posts", {
+  // id: idSchema,
   author: authorSchema,
   texts: textMessageSchema,
 });
+//---------------- FIN ESQUEMA ---------------/
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -24,7 +26,8 @@ await producto_instancia.crearTabla();
 const productos = await producto_instancia.listar();
 // await mensaje_instancia.crearTabla();
 
-const mensajes = await mensaje_instancia.listar();
+const mensajes_sin_normalizar = await mensaje_instancia.listar();
+let mensajes = normalize(mensajes_sin_normalizar, [messageSchema]);
 
 const handlebarsConfig = {
   defaultLayout: "index.html",
@@ -40,7 +43,9 @@ io.on("connection", (socket) => {
   console.log("Nuevo cliente conectado!");
 
   socket.emit("HISTORIAL", productos);
-  socket.emit("MENSAJES", mensajes);
+  let denormalizado = denormalize(mensajes.result, [messageSchema], mensajes.entities);
+  console.log("MENSAJES DENORMALIZADOS:", denormalizado);
+  socket.emit("MENSAJES", mensajes, [messageSchema], denormalizado);
 
   app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
@@ -59,10 +64,28 @@ io.on("connection", (socket) => {
   });
 
   app.post("/chat", (req, res) => {
-    mensajes.push(req.body);
-    mensaje_instancia.agregar(req.body);
-    io.sockets.emit("MENSAJES", mensajes);
-    console.log(mensajes);
+    let req_formateado = {
+      id: req.body.id,
+      author: {
+        id: req.body.id,
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        edad: req.body.edad,
+        alias: req.body.alias,
+        avatar: req.body.avatar,
+      },
+      text: req.body.contenido,
+    };
+    let req_normalizado = normalize(req_formateado, messageSchema);
+    console.log("MENSAJES NORMALIZADOS:", mensajes);
+
+    let denormalizado = denormalize(req_normalizado.result, messageSchema, req_normalizado.entities);
+    console.log("MENSAJES DENORMALIZADOS:", denormalizado);
+
+    mensajes_sin_normalizar.push(req_formateado);
+    mensaje_instancia.agregar(req_normalizado, messageSchema);
+    io.sockets.emit("MENSAJES", mensajes, [messageSchema], denormalizado);
+
     res.redirect("/");
   });
 

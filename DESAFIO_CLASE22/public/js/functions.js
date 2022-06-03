@@ -18,9 +18,12 @@ socket.on("HISTORIAL", async (productos) => {
   document.getElementById("historial").innerHTML = html;
 });
 
-socket.on("MENSAJES", async (mensajes) => {
+socket.on("MENSAJES", async (mensajes, esquema, denormalizados) => {
+  console.log("MENSAJES NORMALIZADOS:-------");
   console.table(mensajes);
-
+  console.log("MENSAJES DENORMALIZADOS:-------");
+  console.table(denormalizados);
+  // let mensajes_denormalizados = normalizr.denormalize(mensajes, esquema);
   let html = await html_built("templates/chat.handlebars", mensajes);
   document.getElementById("chat").innerHTML = html;
 });

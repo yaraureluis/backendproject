@@ -1,4 +1,5 @@
 import { db } from "../config/firebaseConfig.js";
+import { normalize, denormalize, schema } from "normalizr";
 
 class ContainerMensajes {
   constructor(coleccion) {
@@ -22,7 +23,14 @@ class ContainerMensajes {
   //     console.log("No se pudo crear la tabla", err);
   //   }
   // }
-  async agregar(mensaje) {
+  async agregar(mensaje, esquema) {
+    console.log("LINEA 27", mensaje);
+    console.log("LINEA 28", mensaje.result);
+    console.log("LINEA 29", mensaje.entities);
+
+    mensaje = denormalize(mensaje, esquema, mensaje.entities);
+    console.log("MENSAJE EN CONTROLLERS JS", mensaje);
+
     let nuevo_mensaje = {
       id: mensaje.id,
       author: {
@@ -35,6 +43,7 @@ class ContainerMensajes {
       },
       text: mensaje.contenido,
     };
+    console.log("NUEVO MENSAJE", nuevo_mensaje);
     return await this.coleccion.add(nuevo_mensaje);
   }
 
