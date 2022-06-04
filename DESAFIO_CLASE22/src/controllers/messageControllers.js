@@ -28,8 +28,8 @@ class ContainerMensajes {
     console.log("LINEA 28", mensaje.result);
     console.log("LINEA 29", mensaje.entities);
 
-    mensaje = denormalize(mensaje, esquema, mensaje.entities);
-    console.log("MENSAJE EN CONTROLLERS JS", mensaje);
+    // mensaje = denormalize(mensaje, esquema, mensaje.entities);
+    // console.log("MENSAJE EN CONTROLLERS JS", mensaje);
 
     let nuevo_mensaje = {
       id: mensaje.id,
@@ -41,10 +41,10 @@ class ContainerMensajes {
         alias: mensaje.alias,
         avatar: mensaje.avatar,
       },
-      text: mensaje.contenido,
+      text: { id: "mensaje", text: mensaje.contenido },
     };
-    console.log("NUEVO MENSAJE", nuevo_mensaje);
-    return await this.coleccion.add(nuevo_mensaje);
+    console.log("NUEVO MENSAJE", mensaje);
+    return await this.coleccion.add(mensaje);
   }
 
   async listar() {

@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
         alias: req.body.alias,
         avatar: req.body.avatar,
       },
-      text: req.body.contenido,
+      text: { id: "mensajes", mensaje: req.body.contenido },
     };
     let req_normalizado = normalize(req_formateado, messageSchema);
     console.log("MENSAJES NORMALIZADOS:", mensajes);
@@ -83,7 +83,7 @@ io.on("connection", (socket) => {
     console.log("MENSAJES DENORMALIZADOS:", denormalizado);
 
     mensajes_sin_normalizar.push(req_formateado);
-    mensaje_instancia.agregar(req_normalizado, messageSchema);
+    mensaje_instancia.agregar(req_formateado, messageSchema);
     io.sockets.emit("MENSAJES", mensajes, [messageSchema], denormalizado);
 
     res.redirect("/");
