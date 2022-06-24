@@ -19,10 +19,10 @@ process.on("exit", () => {
   console.log(`worker #${process.pid} cerrado`);
 });
 
-process.on("message", (msg) => {
-  console.log("cantidad en process.on", msg);
+process.on("message", (cant) => {
+  console.log("cantidad en process.on", cant);
   console.log(`worker #${process.pid} iniciando su tarea`);
-  const obj = num_aleatorios_rango_repeticion(msg);
+  const obj = num_aleatorios_rango_repeticion(cant);
   process.send(obj);
   console.log(`worker #${process.pid} finalizó su trabajo`);
   process.exit();
