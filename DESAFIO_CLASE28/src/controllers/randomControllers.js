@@ -1,5 +1,5 @@
 // GENERAR N NUMEROS ALEATORIOS EN UN RANGO DE 1 A 1000 Y ESCRIBIR CUANTAS VECES SE REPITE EL NUMERO
-function num_aleatorios_rango_repeticion(n = 100) {
+function num_aleatorios_rango_repeticion(n) {
   n = +n;
   console.log("valor de n", n);
   let numeros_generados = [];
