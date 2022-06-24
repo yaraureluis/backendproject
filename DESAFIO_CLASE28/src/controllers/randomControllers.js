@@ -1,33 +1,18 @@
 // GENERAR N NUMEROS ALEATORIOS EN UN RANGO DE 1 A 1000 Y ESCRIBIR CUANTAS VECES SE REPITE EL NUMERO
 function num_aleatorios_rango_repeticion(n = 100) {
+  n = +n;
+  console.log("valor de n", n);
   let numeros_generados = [];
-  let numeros_sin_repetidos = [];
-  let contador_de_repeticiones = [];
+
   for (let i = 0; i < n; i++) {
     numeros_generados.push(Math.floor(Math.random() * 1000) + 1);
   }
-  for (let i = 0; i < numeros_generados.length; i++) {
-    if (numeros_sin_repetidos.includes(numeros_generados[i])) {
-      contador_de_repeticiones[numeros_sin_repetidos.indexOf(numeros_generados[i])]++;
-    } else {
-      numeros_sin_repetidos.push(numeros_generados[i]);
-      contador_de_repeticiones.push(1);
-    }
-  }
-  console.log("numeros_generados:", numeros_generados);
-  // console.log("numeros_sin_repetidos:", numeros_sin_repetidos);
+  let contador_de_repeticiones = numeros_generados.reduce((acc, curr) => {
+    acc[curr] = (acc[curr] || 0) + 1;
+    return acc;
+  }, {});
 
-  // console.log("NUM CON CONTADOR:", contador_de_repeticiones);
-
-  let obj = {};
-  for (let i = 0; i < numeros_sin_repetidos.length; i++) {
-    obj[numeros_sin_repetidos[i]] = contador_de_repeticiones[i];
-  }
-  console.log("LENGHT OBJ:", Object.keys(obj).length);
-  console.log("OBJETO ARMADO", obj);
-  let total_repeticiones = numeros_generados.length - Object.keys(obj).length;
-  console.log("TOTAL REPETICIONES", total_repeticiones);
-  return obj;
+  return contador_de_repeticiones;
 }
 
 process.on("exit", () => {
@@ -35,8 +20,9 @@ process.on("exit", () => {
 });
 
 process.on("message", (msg) => {
+  console.log("cantidad en process.on", msg);
   console.log(`worker #${process.pid} iniciando su tarea`);
-  const obj = num_aleatorios_rango_repeticion();
+  const obj = num_aleatorios_rango_repeticion(msg);
   process.send(obj);
   console.log(`worker #${process.pid} finalizó su trabajo`);
   process.exit();

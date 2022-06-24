@@ -228,11 +228,12 @@ io.on("connection", (socket) => {
 
   // ----------------------- NUMEROS ALEATORIOS NO BLOQUEANTE ------------------------- /
 
-  app.get("/api-randoms", (req, res) => {
+  app.get("/api-randoms/:cant", (req, res) => {
     const computo = fork(path.resolve(process.cwd(), "src/controllers/randomControllers.js"));
+    let cantidad = req.params.cant;
     computo.on("message", (resultado) => {
       if (resultado === "listo") {
-        computo.send("start");
+        computo.send(cantidad);
       } else {
         res.json({ resultado });
       }
