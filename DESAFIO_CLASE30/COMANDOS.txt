@@ -5,6 +5,7 @@ src/main.js -m CLUSTER (si no se pone este parámetro, entra por defecto en modo
 --- PARA INICIAR EN MODO FORK--
 src/main.js -m FORK (si no se pone este parámetro, entra por defecto en modo FORK)
 
+***PRIMERAMENTE DEBE INSTALARSE DE FORMA GOBAL FOREVER***
 --- INSTALAR FOREVER GLOBAL ---
 npm install forever -g
 --- PARA INICIAR CON FOREVER -- (puedo abrir procesos extras, pero no puedo hacer clusters)
@@ -16,6 +17,8 @@ forever stop <numero del proceso a detener>
 --- PARA CERRAR TODOS LOS PROCESOS CON FOREVER --
 forever stopall
 
+
+***PRIMERAMENTE DEBE INSTALARSE DE FORMA GOBAL PM2***
 --- INSTALAR PM2 GLOBAL ---
 npm install pm2 -g
 
