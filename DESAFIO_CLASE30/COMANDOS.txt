@@ -1,0 +1,42 @@
+COMANDOS:
+
+--- PARA INICIAR EN MODO CLUSTER --
+src/main.js -m CLUSTER (si no se pone este parámetro, entra por defecto en modo FORK)
+--- PARA INICIAR EN MODO FORK--
+src/main.js -m FORK (si no se pone este parámetro, entra por defecto en modo FORK)
+
+--- INSTALAR FOREVER GLOBAL ---
+npm install forever -g
+--- PARA INICIAR CON FOREVER -- (puedo abrir procesos extras, pero no puedo hacer clusters)
+forever start src/main.js 
+--- PARA LISTAR TODOS LOS PROCESOS CON FOREVER --
+forever list
+--- PARA CERRAR TODOS LOS PROCESOS CON FOREVER --
+forever stop <numero del proceso a detener>
+--- PARA CERRAR TODOS LOS PROCESOS CON FOREVER --
+forever stopall
+
+--- INSTALAR PM2 GLOBAL ---
+npm install pm2 -g
+
+--- PARA INICIAR CON PM2 EN MODO FORK --
+pm2 start src/main.js
+pm2 start src/main.js --name="prueba" (iniciar y personalizar con nombre)
+
+--- PARA INICIAR CON PM2 EN MODO CLUSTER --
+pm2 start src/main.js --name="prueba" --watch -i max (crea el maximo de instancias segun mi cpu que son 4)
+pm2 start src/main.js --name="prueba" --watch -i 2 (crea 2 instancias)
+
+--- PARA OTORGAR LA PROPIEDAD DE ACTULIZAR (WATCH) SIN BAJAR EL SERVIDOR CON PM2 ---
+pm2 start src/main.js --name="prueba" --watch
+
+--- PARA ASIGNAR EL PUERTO CON PM2 ---
+pm2 start src/main.js --name="prueba" --watch -- 8081
+
+--- PARA DETENER EL PROCESO CON PM2 ---
+pm2 stop src/main.js
+pm2 stop all (detiene todos)
+
+--- PARA ELIMINAR TODOS LOS PROCESOS CON PM2 ---
+pm2 delete all 
+
