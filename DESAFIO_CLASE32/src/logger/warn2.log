@@ -1,0 +1,10 @@
+[2022-07-07T22:35:43.581] [WARN] prod - Petición hecha a ruta inexistente: /ruta-mala, con el método GET
+[2022-07-07T22:36:05.067] [WARN] prod - Petición hecha a ruta inexistente: /info-rota, con el método GET
+[2022-07-07T22:36:18.082] [WARN] prod - Petición hecha a ruta inexistente: /infos, con el método GET
+[2022-07-07T22:36:21.810] [WARN] prod - Petición hecha a ruta inexistente: /inf, con el método GET
+[2022-07-07T22:45:32.165] [WARN] prod - Petición hecha a ruta inexistente: /signupn, con el método GET
+[2022-07-07T22:51:17.877] [WARN] prod - Petición hecha a ruta inexistente: /logink, con el método GET
+[2022-07-07T22:52:15.803] [WARN] prod - Petición hecha a ruta inexistente: /mala, con el método GET
+[2022-07-07T22:53:30.020] [WARN] prod - Petición hecha a ruta inexistente: /infol, con el método GET
+
+[2022-07-07T23:14:49.632] [ERROR] prod - Error en servidor Error: listen EADDRINUSE: address already in use :::8080
