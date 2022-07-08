@@ -43,3 +43,16 @@ pm2 stop all (detiene todos)
 --- PARA ELIMINAR TODOS LOS PROCESOS CON PM2 ---
 pm2 delete all 
 
+
+
+/////////////////////////////
+TRABAJANDO CON NGINX
+
+**PRIMERAMENTE SE DEBE DESCARGAR nginex**
+nota: en mi caso, cambié el puerto de nginex de 80 a 90 porque me abría XAMPP
+
+-CON PM2 PONGO A ESUCHAR LOS SERVIDORES QUE NECESITA NGINEX PARA LOS CASOS DE USO. 
+pm2 start src/main.js --name="SERVER1" --watch -- 8080 //PRIMER CASO
+pm2 start src/main.js --name="SERVER2" --watch -- 8081 //PRIMER CASO
+
+
