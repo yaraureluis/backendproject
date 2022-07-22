@@ -5,7 +5,7 @@
 - Obtiene todos los productos: GET {{SERVER}}/api/productos
 - Ingresa un producto: POST {{SERVER}}/api/productos
 - Obtiene un producto: GET {{SERVER}}/api/productos/{{PRODUCTO_ID}
-- Actualiza producto: PUT {{SERVER}}/api/products/{{PRODUCT_ID}}
+- Actualiza producto: PUT {{SERVER}}/api/productos/{{PRODUCT_ID}}
 - Elimina un producto: DELETE {{SERVER}}/api/productos/{{PRODUCTO_ID}}
 - Agrega productos al carrito: POST {{SERVER}}/api/carritos/{{ID_CARRITO}} EN EL BODY ID DE PRODUCTO:(ID: "XXX")
 - Registro (usuario): POST {{SERVER}}/registro
