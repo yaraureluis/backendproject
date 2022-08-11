@@ -1,0 +1,10 @@
+{{#if this}}
+  <div class="row">
+
+    <h2 id="bienvenido" class="col-11">Hola {{this}}</h2>
+    <a id="btn_bienvenido" href="/logout" class="btn btn-danger col-1" type="button">SALIR</a>
+    <h2 id="logout" class="col"></h2>
+  </div>
+{{else}}
+  <h4 class="alert alert-danger text-center">NO HAY USUARIO LOGUEADO!</h4>
+{{/if}}
