@@ -1,0 +1,44 @@
+mutation {
+  createProduct(datos: { nombre: "caja", precio: 200, foto: "https://definicion.de/wp-content/uploads/2009/06/producto.png" }) {
+    id
+  }
+}
+
+# mutation { createProduct(datos: { nombre: \"caja\", edad: 200, foto: "https://definicion.de/wp-content/uploads/2009/06/producto.png" }) { id }}
+
+query {
+  getProduct {
+    id
+    nombre
+    precio
+  }
+}
+
+# query { getProduct { id nombre precio }}
+
+query {
+  getProduct(campo: "precio", valor: "220") {
+    id
+    nombre
+    precio
+  }
+}
+
+# query { getProduct(campo: \"precio\", valor: \"220\") { id nombre precio }}
+
+mutation {
+  updateProduct(id: "", datos: { nombre: "caja grande", edad: 400 }) {
+    id
+    nombre
+    edad
+    foto
+  }
+}
+
+mutation {
+  deletePersona(id: "") {
+    id
+    nombre
+    edad
+  }
+}

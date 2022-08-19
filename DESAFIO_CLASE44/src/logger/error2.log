@@ -1,0 +1,123 @@
+[2022-07-07T22:59:56.650] [ERROR] prod - No se pudo crear la tabla mensajes - Error: Access denied for user 'coder_studentk'@'localhost' (using password: YES)
+    at Packet.asError (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at ClientHandshake.execute (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\commands\command.js:29:26)
+    at Connection.handlePacket (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\connection.js:456:32)
+    at PacketParser.onPacket (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\connection.js:85:12)
+    at PacketParser.executeStart (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\connection.js:92:25)
+    at Socket.emit (node:events:390:28)
+    at addChunk (node:internal/streams/readable:315:12)
+    at readableAddChunk (node:internal/streams/readable:289:9)
+    at Socket.Readable.push (node:internal/streams/readable:228:10) {
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlState: '28000',
+  sqlMessage: "Access denied for user 'coder_studentk'@'localhost' (using password: YES)",
+  sql: undefined
+}
+[2022-07-07T23:01:29.771] [ERROR] prod - No se pudo crear la tabla mensajes -  Error: Access denied for user 'coder_studentk'@'localhost' (using password: YES)
+    at Packet.asError (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at ClientHandshake.execute (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\commands\command.js:29:26)
+    at Connection.handlePacket (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\connection.js:456:32)
+    at PacketParser.onPacket (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\connection.js:85:12)
+    at PacketParser.executeStart (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\Luis Yaraure\Documents\CARRERA FULL STACK\CURSO BACK END\DESAFIO_CLASE32\node_modules\mysql2\lib\connection.js:92:25)
+    at Socket.emit (node:events:390:28)
+    at addChunk (node:internal/streams/readable:315:12)
+    at readableAddChunk (node:internal/streams/readable:289:9)
+    at Socket.Readable.push (node:internal/streams/readable:228:10) {
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlState: '28000',
+  sqlMessage: "Access denied for user 'coder_studentk'@'localhost' (using password: YES)",
+  sql: undefined
+}
+[2022-07-07T23:14:49.632] [ERROR] prod - Error en servidor Error: listen EADDRINUSE: address already in use :::8080
+[2022-07-28T15:05:22.808] [ERROR] prod - usuario no logueado
+[2022-07-28T15:05:29.736] [ERROR] prod - usuario no logueado
+[2022-07-28T15:05:38.393] [ERROR] prod - usuario no logueado
+[2022-07-28T16:08:46.064] [ERROR] prod - usuario no logueado
+[2022-07-28T16:09:05.035] [ERROR] prod - usuario no logueado
+[2022-07-28T16:09:21.332] [ERROR] prod - usuario no logueado
+[2022-07-28T16:25:58.340] [ERROR] prod - usuario no logueado
+[2022-07-28T16:27:05.217] [ERROR] prod - usuario no logueado
+[2022-07-28T16:41:27.958] [ERROR] prod - usuario no logueado
+[2022-07-28T17:06:57.380] [ERROR] prod - usuario no logueado
+[2022-07-28T17:07:43.545] [ERROR] prod - usuario no logueado
+[2022-07-28T17:07:55.796] [ERROR] prod - usuario no logueado
+[2022-07-28T21:25:44.694] [ERROR] prod - usuario no logueado
+[2022-07-28T21:28:02.624] [ERROR] prod - usuario no logueado
+[2022-07-28T21:28:15.434] [ERROR] prod - usuario no logueado
+[2022-07-28T21:31:45.269] [ERROR] prod - usuario no logueado
+[2022-07-28T21:35:22.313] [ERROR] prod - usuario no logueado
+[2022-07-28T21:37:15.041] [ERROR] prod - usuario no logueado
+[2022-07-28T21:40:41.815] [ERROR] prod - usuario no logueado
+[2022-07-28T21:58:20.962] [ERROR] prod - usuario no logueado
+[2022-07-28T21:59:37.663] [ERROR] prod - usuario no logueado
+[2022-07-28T22:15:29.307] [ERROR] prod - usuario no logueado
+[2022-07-28T22:20:08.244] [ERROR] prod - usuario no logueado
+[2022-07-28T22:20:43.795] [ERROR] prod - usuario no logueado
+[2022-07-28T22:21:30.736] [ERROR] prod - usuario no logueado
+[2022-07-28T22:21:43.830] [ERROR] prod - usuario no logueado
+[2022-07-28T22:33:36.859] [ERROR] prod - usuario no logueado
+[2022-07-28T22:34:08.481] [ERROR] prod - usuario no logueado
+[2022-07-28T22:38:17.482] [ERROR] prod - usuario no logueado
+[2022-07-28T22:53:21.550] [ERROR] prod - usuario no logueado
+[2022-07-28T22:54:06.998] [ERROR] prod - usuario no logueado
+[2022-07-28T22:54:52.400] [ERROR] prod - usuario no logueado
+[2022-07-28T23:14:21.748] [ERROR] prod - usuario no logueado
+[2022-07-28T23:19:01.088] [ERROR] prod - usuario no logueado
+[2022-07-28T23:20:35.104] [ERROR] prod - usuario no logueado
+[2022-08-04T20:59:55.545] [ERROR] prod - usuario no logueado
+[2022-08-04T22:57:53.951] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T22:58:50.906] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T22:59:12.913] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T22:59:34.417] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:01:25.458] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:01:35.440] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:02:49.646] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:03:31.978] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:04:03.596] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:04:09.267] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:06:29.266] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:06:46.511] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
+[2022-08-04T23:07:01.914] [ERROR] prod - No se pudo crear la tabla mensajes -  [Error: SQLITE_CANTOPEN: unable to open database file] {
+  errno: 14,
+  code: 'SQLITE_CANTOPEN'
+}
