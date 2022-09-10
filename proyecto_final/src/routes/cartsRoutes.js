@@ -4,4 +4,4 @@ import { isAuth } from "../middlewares/isAuth.js";
 export const cartsRouter = new Router();
 cartsRouter.get("/", isAuth, cartsController.getProducts);
 cartsRouter.post("/", isAuth, cartsController.addProduct);
-cartsRouter.delete("/:id", isAuth, cartsController.deleteProduct);
+cartsRouter.delete("/:productId", isAuth, cartsController.deleteProduct);

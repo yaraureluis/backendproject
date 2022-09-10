@@ -13,7 +13,7 @@ export default class CartsDaoMongo {
     }
   };
 
-  getProducts = async (cartId) => {
+  getCartById = async (cartId) => {
     try {
       return await this.#mongooseCartsSchema.findOne({ id: cartId });
     } catch (err) {
@@ -31,7 +31,7 @@ export default class CartsDaoMongo {
 
   deleteProduct = async (cartId, productId) => {
     try {
-      return await this.#mongooseCartsSchema.findOneAndUpdate({ id: cartId }, { $pull: { products: { id: productId } } }, { new: true });
+      return await this.#mongooseCartsSchema.findOneAndUpdate({ id: cartId }, { $pull: { products: { id: productId } } });
     } catch (err) {
       throw err;
     }

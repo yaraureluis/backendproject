@@ -25,7 +25,7 @@ class CartsService {
 
   getProducts = async (req) => {
     try {
-      const cart = await this.#cartsDao.getProducts(req.user.id);
+      const cart = await this.#cartsDao.getCartById(req.user.id);
       if (!cart) {
         throw { message: "Error al obtener los productos del carrito", status: 404 };
       }
@@ -49,7 +49,9 @@ class CartsService {
 
   deleteProduct = async (req) => {
     try {
-      return await this.#cartsDao.deleteProduct(req.user.id, req.body.productId);
+      console.log(req.params.productId);
+      //TODO: VALIDAR QUE EL PRODUCTO EXISTA, SI NO EXISTE LANZAR UN ERROR
+      return await this.#cartsDao.deleteProduct(req.user.id, req.params.productId);
     } catch (err) {
       throw err;
     }
