@@ -1,5 +1,4 @@
-import { productsService } from "../../service/products-service.js";
-// await mongoose.connect(config.mongodb.cnxStr, config.mongodb.options);
+import { productsService } from "../service/products-service.js";
 
 class Controller {
   constructor() {}
