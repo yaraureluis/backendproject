@@ -1,32 +1,32 @@
 class NewProductModel {
-  #title;
+  #name;
   #price;
   #description;
-  #thumbnail;
-  #stock;
+  #image;
+  // #stock;
 
-  constructor({ title, price, description, thumbnail, stock }) {
-    this.title = title;
+  constructor({ name, price, description, image }) {
+    this.name = name;
     this.price = price;
     this.description = description;
-    this.thumbnail = thumbnail;
-    this.stock = stock;
+    this.image = image;
+    // this.stock = stock;
   }
 
-  set title(title) {
-    if (!title) {
+  set name(name) {
+    if (!name) {
       throw { message: "El título no puede estar vacío" };
     }
-    if (title.length === 0) {
+    if (name.length === 0) {
       throw { message: "El título no puede estar vacío" };
     }
-    if (typeof title !== "string") {
+    if (typeof name !== "string") {
       throw { message: "El título debe ser un string" };
     }
-    if (title.length < 3) {
+    if (name.length < 3) {
       throw { message: "El título debe tener al menos 3 caracteres" };
     }
-    this.#title = title;
+    this.#name = name;
   }
 
   set price(price) {
@@ -61,52 +61,52 @@ class NewProductModel {
     this.#description = description;
   }
 
-  set thumbnail(thumbnail) {
-    if (!thumbnail) {
-      throw { message: "El thumbnail no puede estar vacío" };
+  set image(image) {
+    if (!image) {
+      throw { message: "Debe incluir una ruta de imagen" };
     }
-    if (thumbnail.length === 0) {
-      throw { message: "El thumbnail no puede estar vacío" };
+    if (image.length === 0) {
+      throw { message: "Debe incluir una ruta de imagen" };
     }
-    if (typeof thumbnail !== "string") {
-      throw { message: "El thumbnail debe ser un string" };
+    if (typeof image !== "string") {
+      throw { message: "La imagen debe ser un string" };
     }
-    if (thumbnail.length < 3) {
-      throw { message: "El thumbnail debe tener al menos 3 caracteres" };
+    if (image.length < 3) {
+      throw { message: "La imagen debe tener al menos 3 caracteres" };
     }
-    // validar que thumbnail tenga alguna de las siguientes extensiones jpg png jpeg
+    // validar que image tenga alguna de las siguientes extensiones jpg png jpeg
     const validExtensions = ["jpg", "png", "jpeg"];
-    const extension = thumbnail.split(".").pop();
+    const extension = image.split(".").pop();
     if (!validExtensions.includes(extension)) {
-      throw { message: "El thumbnail debe tener una de las siguientes extensiones: jpg, png, jpeg" };
+      throw { message: "La imagen debe tener una de las siguientes extensiones: jpg, png, jpeg" };
     }
 
-    this.#thumbnail = thumbnail;
+    this.#image = image;
   }
 
-  set stock(stock) {
-    if (!stock) {
-      throw { message: "El stock no puede estar vacío" };
-    }
-    if (stock.length === 0) {
-      throw { message: "El stock no puede estar vacío" };
-    }
-    if (typeof stock !== "number") {
-      throw { message: "El stock debe ser un número" };
-    }
-    if (!stock > 0) {
-      throw { message: "El stock debe ser mayor a 0" };
-    }
-    this.#stock = stock;
-  }
+  // set stock(stock) {
+  //   if (!stock) {
+  //     throw { message: "El stock no puede estar vacío" };
+  //   }
+  //   if (stock.length === 0) {
+  //     throw { message: "El stock no puede estar vacío" };
+  //   }
+  //   if (typeof stock !== "number") {
+  //     throw { message: "El stock debe ser un número" };
+  //   }
+  //   if (!stock > 0) {
+  //     throw { message: "El stock debe ser mayor a 0" };
+  //   }
+  //   this.#stock = stock;
+  // }
 
   get dto() {
     const NewProduct = {
-      title: this.#title,
+      name: this.#name,
       price: this.#price,
       description: this.#description,
-      thumbnail: this.#thumbnail,
-      stock: this.#stock,
+      image: this.#image,
+      // stock: this.#stock,
     };
 
     return JSON.parse(JSON.stringify(NewProduct));
