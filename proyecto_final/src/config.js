@@ -13,6 +13,7 @@ const config = {
       // useCreateIndex: true,
       serverSelectionTimeoutMS: 5000,
     },
+    sessionTimeOut: 100000,
   },
   persistence: "mongodb",
 };

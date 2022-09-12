@@ -2,17 +2,17 @@ class NewCartModel {
   #id;
   #products;
 
-  constructor({ id }) {
-    this.id = id;
+  constructor(id) {
+    this.#id = id;
     this.#products = [];
   }
 
   set id(id) {
     if (!id) {
-      throw { message: "El id no puede estar vacío" };
+      throw { message: "El id del carrito no puede estar vacío" };
     }
     if (id.length === 0) {
-      throw { message: "El id no puede estar vacío" };
+      throw { message: "El id del carrito no puede estar vacío" };
     }
     if (typeof id !== "string") {
       throw { message: "El id debe ser un string" };

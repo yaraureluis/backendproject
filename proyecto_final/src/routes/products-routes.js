@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { productsController } from "../controllers/products-controller.js";
 import { isAdmin } from "../middlewares/isAdmin.js";
+import { isAuth } from "../middlewares/isAuth.js";
 
 export const productsRouter = new Router();
 productsRouter.get("/", productsController.getAll);

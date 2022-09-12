@@ -74,7 +74,7 @@ class NewProductModel {
     if (image.length < 3) {
       throw { message: "La imagen debe tener al menos 3 caracteres" };
     }
-    // validar que image tenga alguna de las siguientes extensiones jpg png jpeg
+    // valida que image tenga alguna de las siguientes extensiones jpg png jpeg
     const validExtensions = ["jpg", "png", "jpeg"];
     const extension = image.split(".").pop();
     if (!validExtensions.includes(extension)) {

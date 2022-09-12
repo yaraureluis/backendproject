@@ -1,7 +1,4 @@
-import config from "../../../config.js";
 import mongoose from "mongoose";
-
-await mongoose.connect(config.mongodb.cnxStr, config.mongodb.options);
 
 const mongooseProductsSchema = new mongoose.model("products", {
   name: { type: String, required: true },

@@ -11,13 +11,14 @@ class CartsService {
     this.#newCartModel = NewCartModel;
   }
 
-  create = async (req) => {
+  //TODO: VOLVER A COLOCAR req EN EL PARAMETRO
+  create = async (id) => {
     try {
-      const id = req.user.id;
+      // const id = req.user.id;
       const cart = new this.#newCartModel(id);
       const newCartDto = cart.dto;
       console.log("newCartDto =======", newCartDto);
-      return await this.#cartsDao.add(newCartDto);
+      return await this.#cartsDao.create(newCartDto);
     } catch (err) {
       throw err;
     }
