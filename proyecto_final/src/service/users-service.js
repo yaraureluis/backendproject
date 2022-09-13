@@ -1,10 +1,7 @@
 import NewUserModel from "../models/user-model.js";
 import { usersDao } from "../daos/users/index.js";
 import { cartsService } from "./carts-service.js";
-import { generateId } from "../utilities/generate-id.js";
 import { generateToken } from "../utilities/generate-token.js";
-import dotenv from "dotenv";
-dotenv.config();
 
 class UsersService {
   #usersDao;
@@ -28,12 +25,11 @@ class UsersService {
         console.log("newUserDto", newUserDto);
         const newUser = await this.#usersDao.createUser(newUserDto);
 
-        req.token = generateToken(newUser.email, newUser.id);
-        console.log("token-----", req.token);
+        const token = generateToken(newUser.email, newUser.id);
         console.log("user.id", newUser.id);
         await cartsService.create(newUser.id);
 
-        return { user: newUser.email, id: newUser.id, token: req.token };
+        return { user: newUser.email, id: newUser.id, token };
       }
     } catch (err) {
       throw err;

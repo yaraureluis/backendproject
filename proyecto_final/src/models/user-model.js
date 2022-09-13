@@ -10,13 +10,13 @@ class NewUserModel {
   #id;
 
   constructor({ email, password, name, lastname, phone, image }) {
+    this.id = generateId();
     this.email = email;
     this.password = password;
     this.name = name;
     this.lastname = lastname;
     this.phone = phone;
     this.image = image;
-    this.id = generateId();
   }
 
   set email(email) {
@@ -132,13 +132,13 @@ class NewUserModel {
 
   dto = async () => {
     const newUser = {
+      id: this.#id,
       email: this.#email,
       password: await encryptPassword(this.#password),
       name: this.#name,
       lastname: this.#lastname,
       phone: this.#phone,
       image: this.#image,
-      id: this.#id,
     };
 
     return JSON.parse(JSON.stringify(newUser));

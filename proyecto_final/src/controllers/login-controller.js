@@ -1,9 +1,12 @@
+import { loginService } from "../service/login-service.js";
+
 class Controller {
   constructor() {}
-  postLogin = async (req, res) => {
+
+  login = async (req, res) => {
     try {
-      req.session.token = req.token;
-      res.status(200).json({ message: "Usuario logueado", token: req.token });
+      const user = await loginService.login(req);
+      res.status(200).json(user);
     } catch (err) {
       console.log(err);
       res.status(err.status || 500).json(err);

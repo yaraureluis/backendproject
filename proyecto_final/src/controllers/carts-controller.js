@@ -5,7 +5,6 @@ class Controller {
 
   create = async (req, res) => {
     try {
-      req.user = { id: "123456789" };
       const cart = await cartsService.create(req);
       res.status(201).json(cart);
     } catch (err) {
@@ -16,7 +15,6 @@ class Controller {
 
   getProducts = async (req, res) => {
     try {
-      req.user = { id: "123456789" };
       const cart = await cartsService.getProducts(req);
       res.status(200).json(cart);
     } catch (err) {
@@ -27,7 +25,6 @@ class Controller {
 
   addProduct = async (req, res) => {
     try {
-      req.user = { id: "123456789" };
       const cart = await cartsService.addProduct(req);
       res.status(200).json(cart);
     } catch (err) {
@@ -38,7 +35,6 @@ class Controller {
 
   deleteProduct = async (req, res) => {
     try {
-      req.user = { id: "123456789" };
       await cartsService.deleteProduct(req);
       res.status(200).json({ message: "Producto eliminado" });
     } catch (err) {

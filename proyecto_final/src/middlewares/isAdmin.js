@@ -1,8 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 export const isAdmin = (req, res, next) => {
-  let adm = true;
-  if ((adm = true)) {
+  console.log("req.user IS ADMIN>>>>", req.user);
+  if (req.user.email === process.env.ADM_USER_EMAIL) {
     next();
   } else {
-    res.status(401).json({ error: "No autorizado" });
+    res.status(401).json({ message: "No autorizado", error: "Nivel de acceso insuficiente." });
   }
 };

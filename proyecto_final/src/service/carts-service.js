@@ -38,6 +38,7 @@ class CartsService {
 
   addProduct = async (req) => {
     try {
+      console.log("req.user---carrito---", req.user);
       const product = await productsDao.getById(req.body.productId);
       if (!product) {
         throw { message: "Producto no encontrado", status: 404 };
