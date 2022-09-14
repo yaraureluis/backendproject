@@ -11,7 +11,7 @@ export const emailOrderModelAdm = (order) => {
 
   return {
     from: `API BACKEND CODER <${process.env.EMAIL_USER}>`,
-    to: process.env.EMAIL_ADMIN,
+    to: process.env.ADM_USER_EMAIL,
     subject: `Nuevo pedido de: ${order.name} ${order.lastname}`,
     html: `
     <h1>Nueva orden confirmada de: ${order.name} ${order.lastname}</h1>

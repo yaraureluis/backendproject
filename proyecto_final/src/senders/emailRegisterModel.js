@@ -4,7 +4,7 @@ dotenv.config();
 export const emailRegisterModel = (user) => {
   return {
     from: `API BACKEND CODER <${process.env.EMAIL_USER}>`,
-    to: process.env.EMAIL_ADMIN,
+    to: process.env.ADM_USER_EMAIL,
     subject: "Nuevo usuario registrado: " + user.name,
     html: `
     <h1>Nuevo usuario registrado: ${user.name}</h1>
