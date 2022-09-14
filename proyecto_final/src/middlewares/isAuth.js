@@ -22,18 +22,7 @@ export const isAuth = (req, res, next) => {
 
   try {
     req.user = jwt.verify(token, process.env.PRIVATE_WORD_JWT);
-    console.log("SETEANDO req.user EN IS AUTH>>>>", req.user);
-
-    // (err, decoded) => {
-    //   console.log("SETEANDO req.user EN IS AUTH>>>>", req.user);
-    //   if (err) {
-    //     return res.status(401).json({
-    //       error: "Se requiere autenticacion.",
-    //       message: "Token invalido.",
-    //     });
-    //   }
-    //   return decoded;
-    // });
+    console.log("<<<USUARIO SETEADO EN AUTH>>> ", req.user);
   } catch (ex) {
     console.log(ex);
     return res.status(403).json({

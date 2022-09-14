@@ -12,9 +12,5 @@ class Controller {
       res.status(500).json(err);
     }
   };
-
-  failRegister = async (req, res) => {
-    res.status(400).json({ message: req.session.messages.pop() });
-  };
 }
 export const usersController = new Controller();

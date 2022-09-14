@@ -16,7 +16,8 @@ export default class UsersDaoMongo {
 
   getUserByEmail = async (email) => {
     try {
-      return await this.#mongooseUsersSchema.findOne({ email: email });
+      const user = await this.#mongooseUsersSchema.findOne({ email: email });
+      return user;
     } catch (err) {
       throw err;
     }

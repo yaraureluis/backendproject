@@ -17,15 +17,12 @@ class LoginService {
       const loginUser = new this.#newLoginModel(req.body);
       const loginDto = loginUser.dto;
       const user = await this.#loginDao.getUserByEmail(loginDto.email);
-      console.log("USER >>> ", user);
-      console.log("USER ID>>> ", user.id);
 
       if (!user) {
         throw { message: "No se encuentra un usuario con ese email", status: 400 };
       } else {
         if (await isValidPassword(loginDto.password, user.password)) {
-          const token = generateToken(user.email, user.id);
-          console.log("SETEANDO: ", user.id);
+          const token = generateToken(user);
           return { email: user.email, id: user.id, token };
         } else {
           throw { message: "Contraseña incorrecta", status: 400 };

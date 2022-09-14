@@ -1,16 +1,34 @@
+import { generateId } from "../utilities/generate-id.js";
+
 class NewProductModel {
+  #id;
   #name;
   #price;
   #description;
   #image;
-  // #stock;
 
   constructor({ name, price, description, image }) {
+    this.id = generateId();
     this.name = name;
     this.price = price;
     this.description = description;
     this.image = image;
-    // this.stock = stock;
+  }
+
+  set id(id) {
+    if (!id) {
+      throw { message: "El id no puede estar vacío" };
+    }
+    if (id.length === 0) {
+      throw { message: "El id no puede estar vacío" };
+    }
+    if (typeof id !== "string") {
+      throw { message: "El id debe ser un string" };
+    }
+    if (id.length < 3) {
+      throw { message: "El id debe tener al menos 3 caracteres" };
+    }
+    this.#id = id;
   }
 
   set name(name) {
@@ -74,7 +92,6 @@ class NewProductModel {
     if (image.length < 3) {
       throw { message: "La imagen debe tener al menos 3 caracteres" };
     }
-    // valida que image tenga alguna de las siguientes extensiones jpg png jpeg
     const validExtensions = ["jpg", "png", "jpeg"];
     const extension = image.split(".").pop();
     if (!validExtensions.includes(extension)) {
@@ -84,29 +101,13 @@ class NewProductModel {
     this.#image = image;
   }
 
-  // set stock(stock) {
-  //   if (!stock) {
-  //     throw { message: "El stock no puede estar vacío" };
-  //   }
-  //   if (stock.length === 0) {
-  //     throw { message: "El stock no puede estar vacío" };
-  //   }
-  //   if (typeof stock !== "number") {
-  //     throw { message: "El stock debe ser un número" };
-  //   }
-  //   if (!stock > 0) {
-  //     throw { message: "El stock debe ser mayor a 0" };
-  //   }
-  //   this.#stock = stock;
-  // }
-
   get dto() {
     const NewProduct = {
+      id: this.#id,
       name: this.#name,
       price: this.#price,
       description: this.#description,
       image: this.#image,
-      // stock: this.#stock,
     };
 
     return JSON.parse(JSON.stringify(NewProduct));

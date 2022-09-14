@@ -6,6 +6,10 @@ export default mongoose.model(
     email: { type: String, required: true },
     password: { type: String, required: true },
     id: String,
+    name: String,
+    lastname: String,
+    phone: String,
+    image: String,
   },
   "users"
 );

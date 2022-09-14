@@ -12,8 +12,5 @@ class Controller {
       res.status(err.status || 500).json(err);
     }
   };
-  faillogin(req, res) {
-    res.status(400).json({ message: req.session.messages.pop() });
-  }
 }
 export const loginController = new Controller();

@@ -25,10 +25,10 @@ class UsersService {
         console.log("newUserDto", newUserDto);
         const newUser = await this.#usersDao.createUser(newUserDto);
 
-        const token = generateToken(newUser.email, newUser.id);
         console.log("user.id", newUser.id);
         await cartsService.create(newUser.id);
 
+        const token = generateToken(newUser);
         return { user: newUser.email, id: newUser.id, token };
       }
     } catch (err) {

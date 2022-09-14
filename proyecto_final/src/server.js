@@ -1,57 +1,53 @@
 import express from "express";
-import session from "express-session";
+import { Server as HttpServer } from "http";
+import { Server as IOServer } from "socket.io";
+import { engine } from "express-handlebars";
+
 import dotenv from "dotenv";
-import config from "./config.js";
-import mongoose from "mongoose";
-import MongoStore from "connect-mongo";
 import { productsRouter } from "./routes/products-routes.js";
 import { cartsRouter } from "./routes/carts-routes.js";
 import { usersRouter } from "./routes/user-routes.js";
 import { loginRouter } from "./routes/login-routes.js";
-import passport from "passport";
+import { ordersRouter } from "./routes/orders-routes.js";
+import { uploadImage } from "./middlewares/img-multer.js";
 dotenv.config();
+const PORT = process.env.PORT || 8080;
 
 const app = express();
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer);
+const handlebarsConfig = {
+  defaultLayout: "index.html",
+};
+app.engine("handlebars", engine(handlebarsConfig));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-//CONEXION A MONGO DB SI LA PERSISTENCIA ES EN MONGO DB
-if (config.persistence == "mongodb") {
-  mongoose.connect(config.mongodb.cnxStr, config.mongodb.options);
+io.on("connection", (socket) => {
+  console.log("Nuevo cliente conectado!");
 
-  app.use(
-    session({
-      store: MongoStore.create({
-        mongoUrl: config.mongodb.cnxStr,
-        mongoOptions: config.mongodb.options,
-      }),
-      secret: "keyboard cat",
-      cookie: {
-        httpOnly: false,
-        secure: false,
-        maxAge: config.sessionTimeOut,
-      },
-      rolling: true,
-      resave: true,
-      saveUninitialized: false,
-    })
-  );
-
-  app.use(passport.initialize());
-  app.use(passport.session());
-}
+  app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+  });
+});
 
 app.use("/api/products", productsRouter);
 app.use("/api/shoppingcartproducts", cartsRouter);
 app.use("/api/users", usersRouter);
 app.use("/login", loginRouter);
+app.use("/api/orders", ordersRouter);
+app.post("/api/images", uploadImage, (req, res) => {
+  req.file.filePublicPath = `http://localhost:${PORT}/images/${req.file.filename}`;
+  res.json({ imageRoute: req.file.filePublicPath });
+});
 
 app.all("*", (req, res) => {
   res.status(404).json({ error: "404 Not Found", description: `Método ${req.method} no disponible - Ruta ${req.url} inexistente` });
 });
 
-const PORT = process.env.PORT || 8080;
-const server = app.listen(PORT, () => {
+const server = httpServer.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${server.address().port} - PID: ${process.pid} - ${new Date().toLocaleString()}`);
 });
 
