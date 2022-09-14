@@ -37,7 +37,6 @@ class NewUserModel {
 
   set password(password) {
     if (!password) {
-      console.log("password FALTANTE");
       throw { message: "El password no puede estar vacío" };
     }
     if (password.length === 0) {

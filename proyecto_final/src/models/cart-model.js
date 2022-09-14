@@ -21,17 +21,6 @@ class NewCartModel {
     this.#id = id;
   }
 
-  //   set products(products) {
-  //     if (!products) {
-  //       throw { message: "Productos es requerido" };
-  //     }
-  //     if (!Array.isArray(products)) {
-  //       throw { message: "Productos debe ser un array" };
-  //     }
-
-  //     this.#products = products;
-  //   }
-
   get dto() {
     const NewCart = {
       id: this.#id,

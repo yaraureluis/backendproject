@@ -1,3 +1,4 @@
+import logger from "../../logger/logger.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
@@ -22,9 +23,9 @@ export const isAuth = (req, res, next) => {
 
   try {
     req.user = jwt.verify(token, process.env.PRIVATE_WORD_JWT);
-    console.log("<<<USUARIO SETEADO EN AUTH>>> ", req.user);
+    logger.info("<<<USUARIO SETEADO EN AUTH>>> ", req.user);
   } catch (ex) {
-    console.log(ex);
+    logger.info(ex);
     return res.status(403).json({
       error: "Token invalido.",
       message: "Nivel de acceso insuficiente.",

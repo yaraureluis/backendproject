@@ -8,7 +8,6 @@ class Controller {
       const orders = await ordersService.getOrders(req);
       res.status(200).json(orders);
     } catch (err) {
-      console.log(err);
       res.status(err.status || 500).json(err);
     }
   };
@@ -18,7 +17,6 @@ class Controller {
       const order = await ordersService.addOrder(req);
       res.status(201).json(order);
     } catch (err) {
-      console.log(err);
       res.status(err.status || 500).json(err);
     }
   };

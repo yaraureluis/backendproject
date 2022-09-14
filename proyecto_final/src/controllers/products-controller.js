@@ -8,7 +8,6 @@ class Controller {
       const product = await productsService.add(req);
       res.status(201).json(product);
     } catch (err) {
-      console.log(err);
       res.status(500).json(err);
     }
   };

@@ -8,7 +8,6 @@ class Controller {
       const cart = await cartsService.create(req);
       res.status(201).json(cart);
     } catch (err) {
-      console.log(err);
       res.status(500).json(err);
     }
   };
@@ -18,7 +17,6 @@ class Controller {
       const cart = await cartsService.getProducts(req);
       res.status(200).json(cart);
     } catch (err) {
-      console.log(err);
       res.status(err.status || 500).json(err);
     }
   };
@@ -28,7 +26,6 @@ class Controller {
       const cart = await cartsService.addProduct(req);
       res.status(200).json(cart);
     } catch (err) {
-      console.log(err);
       res.status(err.status || 500).json(err);
     }
   };
@@ -38,7 +35,6 @@ class Controller {
       await cartsService.deleteProduct(req);
       res.status(200).json({ message: "Producto eliminado" });
     } catch (err) {
-      console.log(err);
       res.status(err.status || 500).json(err);
     }
   };

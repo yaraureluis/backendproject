@@ -2,6 +2,7 @@ import NewLoginModel from "../models/login-model.js";
 import { loginDao } from "../daos/login/index.js";
 import { generateToken } from "../utilities/generate-token.js";
 import { isValidPassword } from "../utilities/is-valid-password.js";
+import logger from "../../logger/logger.js";
 
 class LoginService {
   #loginDao;
@@ -29,6 +30,7 @@ class LoginService {
         }
       }
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
@@ -37,6 +39,7 @@ class LoginService {
     try {
       return await this.#loginDao.getUserByEmail(email);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };

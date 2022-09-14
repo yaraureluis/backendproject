@@ -3,6 +3,8 @@ import { ordersDao } from "../daos/orders/index.js";
 import { cartsDao } from "../daos/carts/index.js";
 import { emailConfig } from "../senders/email-config.js";
 import { emailOrderModelAdm } from "../senders/email-order-model-adm.js";
+import { emailOrderModelUser } from "../senders/email-order-model-user.js";
+import logger from "../../logger/logger.js";
 
 class OrdersService {
   #ordersDao;
@@ -17,13 +19,13 @@ class OrdersService {
     try {
       return await this.#ordersDao.getOrders(req.user.id);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
 
   addOrder = async (req) => {
     try {
-      console.log("INFO DEL USUARIO PARA ORDEN: ", req.user);
       const cart = await cartsDao.getCartById(req.user.id);
 
       if (!cart) {
@@ -32,7 +34,6 @@ class OrdersService {
 
       const order = new this.#newOrderModel(req.user.email, req.user.name, req.user.lastname, req.user.phone, req.user.image, req.user.id, cart.products);
       const newOrderDto = order.dto;
-      console.log("newOrderDto =======", newOrderDto);
 
       const newOrderGenerated = await this.#ordersDao.addOrder(newOrderDto);
 
@@ -43,16 +44,19 @@ class OrdersService {
       await cartsDao.deleteAllProducts(req.user.id);
       return newOrderGenerated;
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
 
   #notifyOrder = async (order) => {
     try {
-      //ENVIO EMAIL CON LA ORDEN AL ADMINISTRADOR
-      const emailData = emailOrderModelAdm(order);
-      let email = await emailConfig.sendMail(emailData);
+      const emailAdminData = emailOrderModelAdm(order);
+      await emailConfig.sendMail(emailAdminData);
+      const emailUserData = emailOrderModelUser(order);
+      await emailConfig.sendMail(emailUserData);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };

@@ -1,7 +1,7 @@
 import NewCartModel from "../models/cart-model.js";
 import { cartsDao } from "../daos/carts/index.js";
 import { productsDao } from "../daos/products/index.js";
-
+import logger from "../../logger/logger.js";
 class CartsService {
   #cartsDao;
   #newCartModel;
@@ -11,15 +11,13 @@ class CartsService {
     this.#newCartModel = NewCartModel;
   }
 
-  //TODO: VOLVER A COLOCAR req EN EL PARAMETRO
   create = async (id) => {
     try {
-      // const id = req.user.id;
       const cart = new this.#newCartModel(id);
       const newCartDto = cart.dto;
-      console.log("newCartDto =======", newCartDto);
       return await this.#cartsDao.create(newCartDto);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
@@ -32,29 +30,29 @@ class CartsService {
       }
       return cart.products;
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
 
   addProduct = async (req) => {
     try {
-      console.log("req.user---carrito---", req.user);
       const product = await productsDao.getById(req.body.productId);
       if (!product) {
         throw { message: "Producto no encontrado", status: 404 };
       }
       return await this.#cartsDao.addProduct(req.user.id, product);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
 
   deleteProduct = async (req) => {
     try {
-      console.log(req.params.productId);
-      //TODO: VALIDAR QUE EL PRODUCTO EXISTA, SI NO EXISTE LANZAR UN ERROR
       return await this.#cartsDao.deleteProduct(req.user.id, req.params.productId);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };

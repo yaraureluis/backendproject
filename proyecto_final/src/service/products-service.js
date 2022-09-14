@@ -1,5 +1,6 @@
 import NewProductModel from "../models/product-model.js";
 import { productsDao } from "../daos/products/index.js";
+import logger from "../../logger/logger.js";
 
 class ProductsService {
   #productsDao;
@@ -14,9 +15,9 @@ class ProductsService {
     try {
       const product = new this.#newProductModel(req.body);
       const newProductDto = product.dto;
-      console.log("newProductDto =======", newProductDto);
       return await this.#productsDao.add(newProductDto);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
@@ -25,6 +26,7 @@ class ProductsService {
     try {
       return await this.#productsDao.getAll();
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
@@ -37,6 +39,7 @@ class ProductsService {
       }
       return product;
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
@@ -49,6 +52,7 @@ class ProductsService {
       }
       return await this.#productsDao.updateById(req.params.id, req.body);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };
@@ -61,6 +65,7 @@ class ProductsService {
       }
       return await this.#productsDao.deleteById(req.params.id);
     } catch (err) {
+      logger.error(err);
       throw err;
     }
   };

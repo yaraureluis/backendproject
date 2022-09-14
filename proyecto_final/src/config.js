@@ -8,9 +8,6 @@ const config = {
   mongodb: {
     cnxStr: process.env.MONGO_CONN_STRING,
     options: {
-      // useNewUrlParser: true,
-      // useUnifiedTopology: true,
-      // useCreateIndex: true,
       serverSelectionTimeoutMS: 5000,
     },
     sessionTimeOut: 100000,
