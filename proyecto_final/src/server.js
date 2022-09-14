@@ -19,6 +19,7 @@ const io = new IOServer(httpServer);
 const handlebarsConfig = {
   defaultLayout: "index.html",
 };
+const messages = [];
 app.engine("handlebars", engine(handlebarsConfig));
 
 app.use(express.json());
@@ -27,6 +28,13 @@ app.use(express.static("public"));
 
 io.on("connection", (socket) => {
   console.log("Nuevo cliente conectado!");
+  socket.emit("MESSAGE", messages);
+  socket.on("MESSAGE", (message) => {
+    message.date = new Date().toLocaleString();
+    console.log(message);
+    messages.push(message);
+    io.emit("MESSAGE", messages);
+  });
 
   app.get("/", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
